@@ -84,30 +84,47 @@ body {
 .hero-section {
   position: relative;
   text-align: center;
-  min-height: 120vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 0 1rem;
+  background: transparent;
 }
 
 .hero-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.95) 100%),
-    url('./assets/images/background.png');
-  background-size: cover;
-  background-position: center;
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,0.10) 0px,
+      rgba(255,255,255,0.10) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.10) 0px,
+      rgba(255,255,255,0.10) 1px,
+      transparent 1px,
+      transparent 40px
+    );
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: auto;
+  max-width: 800px;
   margin: 0 auto;
+  /* padding: 3rem 2rem; */
+  background: rgba(0,0,0,0.15);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
 }
 
 .hero-title {
@@ -162,65 +179,98 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.5rem;
-    }
-    
-    .hero-description {
-        font-size: 0.875rem;
-    }
-    
-    .primary-button {
-        padding: 0.75rem 2rem;
-    }
+  .hero-section {
+    padding: 0 1rem; /* Lebih kecil di mobile */
+    min-height: 80vh;
+  }
+  .hero-content {
+    padding: 2rem 1rem;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  .hero-description {
+    font-size: 1rem;
+  }
 }
 
-/* Video Section */
-.video-section {
-    padding: 4rem 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* About Section */
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
 }
 
-.video-container {
-    width: 100%;
-    max-width: 800px;
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    border-radius: 1rem;
-    background: linear-gradient(145deg, #1f2937, #111827);
-    box-shadow: 
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 0 30px 0 rgba(25, 25, 112, 0.4),
-        0 0 60px 20px rgba(25, 25, 112, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.3s ease;
+.about-content {
+  background: rgba(31, 41, 55, 0.85); /* dark, transparan */
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 rgba(17,0,251,0.08), 0 0 24px 4px #1100fb22;
+  padding: 2.5rem 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-.video-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+.about-content .section-title {
+  margin-bottom: 1.5rem;
 }
 
-/* Responsive Design */
+.about-text {
+  color: #ececec;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.about-content .primary-button {
+  margin-top: 0.5rem;
+}
+
+.about-text .title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.about-text .story {
+    color: #ececec;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+
+/* Responsive */
 @media (max-width: 768px) {
-    .video-section {
-        padding: 2rem 1rem;
-    }
-    
-    .video-container {
+    .about-content {
+        padding: 1.5rem 1.5rem;
         max-width: 100%;
+    }
+    .about-section {
+        padding: 1rem 2rem;
+    }
+    .about-text {
+        font-size: 0.8rem;
+    }
+    .about-text .title {
+        font-size: 1.05rem;
+        margin-top: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    .about-text .story {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
     }
 }
 
